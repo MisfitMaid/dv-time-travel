@@ -149,7 +149,11 @@ namespace TimeTravel
 			{
 				display.SetDisplay("TIME", "Cancel", "");
 			}
-			display.SetDisplay("TIME", selectedTime.ToString(), "");
+			else
+			{
+				display.SetDisplay("TIME", $"Set to {selectedTime}", "");
+			}
+
 		}
 
 		public bool ButtonACustomAction()
