@@ -108,6 +108,7 @@ public class CommsTimeTravel : MonoBehaviour, ICommsRadioMode
 		switch (currentState)
 		{
 			case State.Entry:
+				CommsRadioController.PlayAudioFromRadio(SelectedCarSound, transform);
 				SetState(State.SelectTime);
 				break;
 			case State.SelectTime:
@@ -117,6 +118,7 @@ public class CommsTimeTravel : MonoBehaviour, ICommsRadioMode
 						SetState(State.Entry);
 						break;
 					default:
+						CommsRadioController.PlayAudioFromRadio(SelectedCarSound, transform);
 						DoTimeTravel(selectedTime);
 						break;
 				}
