@@ -1,12 +1,7 @@
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using DV;
-using DV.ThingTypes;
 using HarmonyLib;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 
 namespace TimeTravel
 {
@@ -138,8 +133,16 @@ namespace TimeTravel
 			TimeTravel.logger.Log($"Attempting to set time to {hour}:00");
 
 			TOD_Sky sky = UnityEngine.Object.FindObjectOfType<TOD_Sky>();
-			sky.Cycle.Hour = hour;
-			SetState(State.Entry);
+			if (sky != null)
+			{
+				sky.Cycle.Hour = hour;
+				SetState(State.Entry);
+			}
+			else
+			{
+				TimeTravel.logger.Error("Could not find TOD_Sky object! This is a bug, please report it!");
+			}
+
 		}
 
 
